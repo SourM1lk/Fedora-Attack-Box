@@ -1,0 +1,7 @@
+---
+- name: Install GCC
+  become: true
+  dnf:
+    name: gcc
+    state: present
+    update_cache: yes

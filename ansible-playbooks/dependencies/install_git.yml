@@ -1,0 +1,6 @@
+---
+- name: Ensure Git is installed
+  become: true
+  dnf:
+    name: git
+    state: present

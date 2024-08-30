@@ -1,0 +1,32 @@
+---
+- name: Download msfinstall script
+  get_url:
+    url: https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb
+    dest: /tmp/msfinstall
+    mode: '0755'
+  become: true
+
+- name: Run msfinstall script
+  command: /tmp/msfinstall
+  become: true
+
+- name: Clean up msfinstall script
+  file:
+    path: /tmp/msfinstall
+    state: absent
+  become: true
+
+- name: Create Metasploit .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Metasploit Framework
+      Comment=Metasploit Penetration Testing Framework
+      Exec=msfconsole
+      Icon=/usr/share/icons/metasploit.png
+      Terminal=true
+      Type=Application
+      Categories=SecurityTools;
+    dest: /usr/share/applications/metasploit.desktop
+    mode: '0644'
+  become: true

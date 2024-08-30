@@ -1,0 +1,45 @@
+---
+- name: Clone the entire SharpCollection repository
+  git:
+    repo: https://github.com/Flangvik/SharpCollection.git
+    dest: /opt/SharpCollection
+    clone: yes
+    depth: 1
+    force: yes
+  become: true
+
+- name: Remove NetFramework_4.0_Any folder
+  file:
+    path: /opt/SharpCollection/NetFramework_4.0_Any
+    state: absent
+  become: true
+
+- name: Remove NetFramework_4.0_x86 folder
+  file:
+    path: /opt/SharpCollection/NetFramework_4.0_x86
+    state: absent
+  become: true
+
+- name: Remove NetFramework_4.0_x64 folder
+  file:
+    path: /opt/SharpCollection/NetFramework_4.0_x64
+    state: absent
+  become: true
+
+- name: Remove NetFramework_4.5_Any folder
+  file:
+    path: /opt/SharpCollection/NetFramework_4.5_Any
+    state: absent
+  become: true
+
+- name: Remove NetFramework_4.5_x86 folder
+  file:
+    path: /opt/SharpCollection/NetFramework_4.5_x86
+    state: absent
+  become: true
+
+- name: Remove NetFramework_4.5_x64 folder
+  file:
+    path: /opt/SharpCollection/NetFramework_4.5_x64
+    state: absent
+  become: true

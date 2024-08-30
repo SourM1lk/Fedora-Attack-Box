@@ -1,0 +1,8 @@
+---
+- name: Install Ruby and development tools
+  become: true
+  dnf:
+    name:
+      - ruby
+      - ruby-devel
+    state: present

@@ -1,0 +1,21 @@
+---
+- name: Install John the Ripper
+  become: true
+  dnf:
+    name: john
+    state: present
+
+- name: Create John the Ripper .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=John the Ripper
+      Comment=John the Ripper password cracker
+      Exec=john
+      Icon=/usr/share/icons/JtR.png
+      Terminal=true
+      Type=Application
+      Categories=PasswordRecovery;
+    dest: /usr/share/applications/john.desktop
+    mode: '0644'
+  become: true

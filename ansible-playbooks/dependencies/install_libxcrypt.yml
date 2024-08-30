@@ -1,0 +1,6 @@
+---
+- name: Install libxcrypt-compat
+  dnf:
+    name: libxcrypt-compat
+    state: present
+  become: true

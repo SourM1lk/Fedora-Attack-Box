@@ -1,0 +1,20 @@
+---
+- name: Install Nmap
+  become: true
+  dnf:
+    name: nmap
+    state: present
+
+- name: Create Nmap .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Nmap
+      Comment=Nmap - Network Mapper
+      Exec=/usr/bin/nmap
+      Icon=/usr/share/icons/nmap.png
+      Terminal=true
+      Type=Application
+      Categories=ScannerTools;
+    dest: /usr/share/applications/nmap.desktop
+    mode: '0644'

@@ -1,0 +1,21 @@
+---
+- name: Install Masscan
+  become: true
+  dnf:
+    name: masscan
+    state: present
+
+- name: Create Masscan .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Masscan
+      Comment=Mass IP port scanner
+      Exec=masscan
+      Icon=/usr/share/icons/masscan.svg
+      Terminal=true
+      Type=Application
+      Categories=ScannerTools;
+    dest: /usr/share/applications/masscan.desktop
+    mode: '0644'
+  become: true

@@ -1,0 +1,22 @@
+---
+- name: Download and install Feroxbuster
+  become: true
+  shell: |
+    curl -sL https://raw.githubusercontent.com/epi052/feroxbuster/main/install-nix.sh | bash -s /usr/local/bin
+  args:
+    executable: /bin/bash
+
+- name: Create Feroxbuster .desktop file
+  become: true
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Feroxbuster
+      Comment=Feroxbuster - Fast, simple, recursive content discovery
+      Exec=gnome-terminal -- bash -c "/usr/local/bin/feroxbuster; exec bash"
+      Icon=/usr/share/icons/feroxbuster.png
+      Terminal=true
+      Type=Application
+      Categories=SecurityTools;
+    dest: /usr/share/applications/feroxbuster.desktop
+    mode: '0644'

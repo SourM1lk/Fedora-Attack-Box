@@ -1,0 +1,6 @@
+---
+- name: Ensure Go is installed
+  become: true
+  dnf:
+    name: golang
+    state: present

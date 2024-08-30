@@ -1,0 +1,27 @@
+---
+- name: Clone the dirsearch repository
+  git:
+    repo: "https://github.com/maurosoria/dirsearch.git"
+    dest: /opt/dirsearch
+    depth: 1
+
+- name: Move dirseach to /usr/local/bin
+  file:
+    src: "/opt/dirsearch/dirsearch.py"
+    dest: "/usr/bin/dirsearch"
+    state: link
+    mode: '0755'
+
+- name: Create Dirsearch .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Dirsearch
+      Comment=Dirsearch - Web path scanner
+      Exec=gnome-terminal -- bash -c "/usr/bin/dirsearch; exec bash"
+      Icon=/usr/share/icons/dirsearch.svg
+      Terminal=true
+      Type=Application
+      Categories=ScannerTools;
+    dest: /usr/share/applications/dirsearch.desktop
+    mode: '0644'

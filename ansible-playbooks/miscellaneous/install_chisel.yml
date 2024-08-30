@@ -1,0 +1,21 @@
+---
+- name: Install Chisel
+  become: true
+  dnf:
+    name: chisel
+    state: present
+
+- name: Create Chisel .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Chisel
+      Comment=Fast TCP/UDP tunnel over HTTP
+      Exec=chisel
+      Icon=/usr/share/icons/chisel.jpg
+      Terminal=true
+      Type=Application
+      Categories=NetworkTools;
+    dest: /usr/share/applications/chisel.desktop
+    mode: '0644'
+  become: true

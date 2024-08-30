@@ -1,0 +1,68 @@
+---
+- name: Install dependencies
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/dependencies/install_git.yml
+    - include_tasks: ansible-playbooks/dependencies/install_go.yml
+    - include_tasks: ansible-playbooks/dependencies/install_python.yml
+    - include_tasks: ansible-playbooks/dependencies/install_rust.yml
+    - include_tasks: ansible-playbooks/dependencies/install_gcc.yml
+    - include_tasks: ansible-playbooks/dependencies/install_libxcrypt.yml
+    - include_tasks: ansible-playbooks/dependencies/install_ruby.yml
+
+- name: Move Icons to /usr/share/icons
+  hosts: all
+  become: true
+  tasks:
+    - name: Move icons to /usr/share/icons
+      copy:
+        src: "{{ playbook_dir }}/icons/"
+        dest: /usr/share/icons/
+        mode: '0644'
+
+- name: Create Desktop Directories
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/utils/create_directory.yml
+
+- name: Install Scanner Tools
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/scanners/install_ffuf.yml
+    - include_tasks: ansible-playbooks/scanners/install_nmap.yml
+    - include_tasks: ansible-playbooks/scanners/install_dirsearch.yml
+    - include_tasks: ansible-playbooks/scanners/install_masscan.yml
+    - include_tasks: ansible-playbooks/scanners/install_feroxbuster.yml
+    - include_tasks: ansible-playbooks/scanners/install_sqlmap.yml
+
+- name: Install Active Directory Tools
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
+    - include_tasks: ansible-playbooks/active_directory/install_enum4linux.yml
+
+- name: Install Web Tools
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/web_tools/install_caido.yml
+
+- name: Install Password Recovery Tools
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/password_recovery/install_hashcat.yml
+    - include_tasks: ansible-playbooks/password_recovery/install_john.yml
+
+- name: Install Miscellaneous Tools
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/miscellaneous/install_metasploit.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_sharpcollection.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_chisel.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml

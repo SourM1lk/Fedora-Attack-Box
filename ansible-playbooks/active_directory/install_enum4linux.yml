@@ -1,0 +1,30 @@
+---
+- name: Clone enum4linux repository into /opt
+  git:
+    repo: https://github.com/CiscoCXSecurity/enum4linux.git
+    dest: /opt/enum4linux
+    version: master
+    force: yes
+  become: true
+
+- name: Copy enum4linux.pl to /usr/bin
+  copy:
+    src: /opt/enum4linux/enum4linux.pl
+    dest: /usr/bin/enum4linux
+    mode: '0755'
+  become: true
+
+- name: Create enum4linux .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Enum4Linux
+      Comment=Enum4Linux - SMB enumeration tool
+      Exec=gnome-terminal -- bash -c "/usr/bin/enum4linux; exec bash"
+      Icon=/usr/share/icons/enum4linux.svg
+      Terminal=true
+      Type=Application
+      Categories=SecurityTools;
+    dest: /usr/share/applications/enum4linux.desktop
+    mode: '0644'
+  become: true

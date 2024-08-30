@@ -1,0 +1,23 @@
+---
+- name: Install Evil-WinRM
+  become: true
+  environment:
+    GEM_HOME: ~/.gem
+    GEM_PATH: ~/.gem
+    PATH: "{{ ansible_env.PATH }}:~/bin"
+  command: gem install evil-winrm --user-install --bindir ~/bin
+
+- name: Create Evil-WinRM .desktop file
+  become: true
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Evil-WinRM
+      Comment=Evil-WinRM - WinRM shell for pentesting
+      Exec=gnome-terminal -- bash -c "~/bin/evil-winrm; exec bash"
+      Icon=/usr/share/icons/evil-winrm.svg
+      Terminal=true
+      Type=Application
+      Categories=SecurityTools;
+    dest: /usr/share/applications/evil-winrm.desktop
+    mode: '0644'

@@ -1,0 +1,30 @@
+---
+- name: Clone sqlmap repository
+  become: true
+  git:
+    repo: https://github.com/sqlmapproject/sqlmap.git
+    dest: /opt/sqlmap-dev
+    depth: 1
+
+- name: Create symbolic link for sqlmap.py
+  become: true
+  file:
+    src: /opt/sqlmap-dev/sqlmap.py
+    dest: /usr/bin/sqlmap
+    state: link
+    mode: '0755'
+
+- name: Create sqlmap .desktop file
+  become: true
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=SQLMap
+      Comment=SQLMap - Automatic SQL injection and database takeover tool
+      Exec=gnome-terminal -- bash -c "/usr/bin/sqlmap; exec bash"
+      Icon=/usr/share/icons/sqlmap.svg
+      Terminal=true
+      Type=Application
+      Categories=SecurityTools;
+    dest: /usr/share/applications/sqlmap.desktop
+    mode: '0644'

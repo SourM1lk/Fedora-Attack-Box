@@ -1,0 +1,21 @@
+---
+- name: Install Hashcat
+  become: true
+  dnf:
+    name: hashcat
+    state: present
+
+- name: Create Hashcat .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Hashcat
+      Comment=Advanced password recovery tool
+      Exec=hashcat
+      Icon=/usr/share/icons/hashcat.svg
+      Terminal=true
+      Type=Application
+      Categories=PasswordRecovery;
+    dest: /usr/share/applications/hashcat.desktop
+    mode: '0644'
+  become: true

@@ -1,0 +1,9 @@
+---
+- name: Install Rust
+  become: true
+  dnf:
+    name:
+      - rust
+      - cargo
+    state: present
+    update_cache: yes

@@ -1,0 +1,26 @@
+---
+- name: Download Caido AppImage
+  get_url:
+    url: "https://storage.googleapis.com/caido-releases/v0.40.0/caido-desktop-v0.40.0-linux-x86_64.AppImage"
+    dest: "/tmp/caido.AppImage"
+    mode: '0755'
+
+- name: Move Caido AppImage to /usr/bin and rename it
+  copy:
+    src: "/tmp/caido.AppImage"
+    dest: "/usr/bin/caido"
+    mode: '0755'
+
+- name: Create Caido .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=Caido
+      Comment=Caido Security Testing Tool
+      Exec=/usr/bin/caido
+      Icon=/usr/share/icons/caido.png
+      Terminal=false
+      Type=Application
+      Categories=WebTools;
+    dest: /usr/share/applications/caido.desktop
+    mode: '0644'

@@ -1,0 +1,31 @@
+---
+- name: Clone the ffuf repository
+  git:
+    repo: "https://github.com/ffuf/ffuf"
+    dest: /opt/ffuf
+    update: yes
+
+- name: Build ffuf
+  command: /usr/bin/go build
+  args:
+    chdir: /opt/ffuf
+
+- name: Move ffuf binary to /usr/local/bin
+  copy:
+    src: /opt/ffuf/ffuf
+    dest: /usr/local/bin/ffuf
+    mode: '0755'
+
+- name: Create FFUF .desktop file
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=FFUF
+      Comment=FFUF - Fuzz Faster U Fool
+      Exec=/usr/local/bin/ffuf
+      Icon=/usr/share/icons/ffuf.png
+      Terminal=true
+      Type=Application
+      Categories=ScannerTools;
+    dest: /usr/share/applications/ffuf.desktop
+    mode: '0644'

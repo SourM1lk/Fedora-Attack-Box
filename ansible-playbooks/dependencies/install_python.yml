@@ -1,0 +1,14 @@
+---
+- name: Install Python Related Items
+  become: true
+  dnf:
+    name:
+      - pipx
+      - python3-devel
+    state: present
+    update_cache: yes
+
+- name: Ensure pipx is added to the PATH
+  command: pipx ensurepath --force
+  environment:
+    PATH: "{{ ansible_env.PATH }}:~/.local/bin"
