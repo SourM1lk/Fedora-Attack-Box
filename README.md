@@ -43,7 +43,7 @@ evil-winrm (needs more work, currently broken)
 ```
 
 
-### Notes tp self
+### Notes to self
 ```
 Things i might remove:
 pipx
