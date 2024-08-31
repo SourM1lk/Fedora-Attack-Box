@@ -65,4 +65,5 @@
     - include_tasks: ansible-playbooks/miscellaneous/install_metasploit.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_sharpcollection.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_chisel.yml
-    - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_ligolo-ng.yml
+    # - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml

@@ -39,6 +39,7 @@ hashcat
 MetaSploit
 SharpCollection
 Chisel
+ligolo-ng
 evil-winrm (needs more work, currently broken)
 ```
 
@@ -56,7 +57,6 @@ gcc
 ```
 wordlists
 burp
-ligolo-ng
 impacket-scripts (pipx this will need work)
 bloodhound (neo4j)
 ghidra

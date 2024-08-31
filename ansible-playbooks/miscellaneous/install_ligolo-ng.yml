@@ -1,0 +1,195 @@
+---
+- name: Install ligolo-ng
+  become: true
+  tasks:
+    - name: Get the latest ligolo-ng release version
+      shell: |
+        curl -s https://api.github.com/repos/nicocha30/ligolo-ng/releases/latest | jq -r .tag_name
+      register: release_version
+
+    - name: Strip 'v' from the version number
+      set_fact:
+        ligolo_version_stripped: "{{ release_version.stdout | regex_replace('^v', '') }}"
+
+    # Create necessary directories for each OS/architecture
+    - name: Create directory for Windows ARM64
+      file:
+        path: /opt/ligolo-ng/windows/arm64
+        state: directory
+        mode: '0755'
+
+    - name: Create directory for Windows AMD64
+      file:
+        path: /opt/ligolo-ng/windows/amd64
+        state: directory
+        mode: '0755'
+
+    - name: Create directory for Linux ARM64
+      file:
+        path: /opt/ligolo-ng/linux/arm64
+        state: directory
+        mode: '0755'
+
+    - name: Create directory for Linux AMD64
+      file:
+        path: /opt/ligolo-ng/linux/amd64
+        state: directory
+        mode: '0755'
+
+    - name: Create directory for Darwin ARM64
+      file:
+        path: /opt/ligolo-ng/darwin/arm64
+        state: directory
+        mode: '0755'
+
+    - name: Create directory for Darwin AMD64
+      file:
+        path: /opt/ligolo-ng/darwin/amd64
+        state: directory
+        mode: '0755'
+
+    # Download and extract for Windows ARM64
+    - name: Download ligolo-ng proxy for Windows ARM64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_proxy_{{ ligolo_version_stripped }}_windows_arm64.zip"
+        dest: /tmp/ligolo-ng_proxy_windows_arm64.zip
+
+    - name: Extract ligolo-ng proxy for Windows ARM64
+      unarchive:
+        src: /tmp/ligolo-ng_proxy_windows_arm64.zip
+        dest: /opt/ligolo-ng/windows/arm64
+        remote_src: yes
+
+    - name: Download ligolo-ng agent for Windows ARM64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_agent_{{ ligolo_version_stripped }}_windows_arm64.zip"
+        dest: /tmp/ligolo-ng_agent_windows_arm64.zip
+
+    - name: Extract ligolo-ng agent for Windows ARM64
+      unarchive:
+        src: /tmp/ligolo-ng_agent_windows_arm64.zip
+        dest: /opt/ligolo-ng/windows/arm64
+        remote_src: yes
+
+    # Download and extract for Windows AMD64
+    - name: Download ligolo-ng proxy for Windows AMD64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_proxy_{{ ligolo_version_stripped }}_windows_amd64.zip"
+        dest: /tmp/ligolo-ng_proxy_windows_amd64.zip
+
+    - name: Extract ligolo-ng proxy for Windows AMD64
+      unarchive:
+        src: /tmp/ligolo-ng_proxy_windows_amd64.zip
+        dest: /opt/ligolo-ng/windows/amd64
+        remote_src: yes
+
+    - name: Download ligolo-ng agent for Windows AMD64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_agent_{{ ligolo_version_stripped }}_windows_amd64.zip"
+        dest: /tmp/ligolo-ng_agent_windows_amd64.zip
+
+    - name: Extract ligolo-ng agent for Windows AMD64
+      unarchive:
+        src: /tmp/ligolo-ng_agent_windows_amd64.zip
+        dest: /opt/ligolo-ng/windows/amd64
+        remote_src: yes
+
+    # Download and extract for Linux ARM64
+    - name: Download ligolo-ng proxy for Linux ARM64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_proxy_{{ ligolo_version_stripped }}_linux_arm64.tar.gz"
+        dest: /tmp/ligolo-ng_proxy_linux_arm64.tar.gz
+
+    - name: Extract ligolo-ng proxy for Linux ARM64
+      unarchive:
+        src: /tmp/ligolo-ng_proxy_linux_arm64.tar.gz
+        dest: /opt/ligolo-ng/linux/arm64
+        remote_src: yes
+
+    - name: Download ligolo-ng agent for Linux ARM64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_agent_{{ ligolo_version_stripped }}_linux_arm64.tar.gz"
+        dest: /tmp/ligolo-ng_agent_linux_arm64.tar.gz
+
+    - name: Extract ligolo-ng agent for Linux ARM64
+      unarchive:
+        src: /tmp/ligolo-ng_agent_linux_arm64.tar.gz
+        dest: /opt/ligolo-ng/linux/arm64
+        remote_src: yes
+
+    # Download and extract for Linux AMD64
+    - name: Download ligolo-ng proxy for Linux AMD64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_proxy_{{ ligolo_version_stripped }}_linux_amd64.tar.gz"
+        dest: /tmp/ligolo-ng_proxy_linux_amd64.tar.gz
+
+    - name: Extract ligolo-ng proxy for Linux AMD64
+      unarchive:
+        src: /tmp/ligolo-ng_proxy_linux_amd64.tar.gz
+        dest: /opt/ligolo-ng/linux/amd64
+        remote_src: yes
+
+    - name: Download ligolo-ng agent for Linux AMD64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_agent_{{ ligolo_version_stripped }}_linux_amd64.tar.gz"
+        dest: /tmp/ligolo-ng_agent_linux_amd64.tar.gz
+
+    - name: Extract ligolo-ng agent for Linux AMD64
+      unarchive:
+        src: /tmp/ligolo-ng_agent_linux_amd64.tar.gz
+        dest: /opt/ligolo-ng/linux/amd64
+        remote_src: yes
+
+    # Download and extract for Darwin ARM64
+    - name: Download ligolo-ng proxy for Darwin ARM64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_proxy_{{ ligolo_version_stripped }}_darwin_arm64.tar.gz"
+        dest: /tmp/ligolo-ng_proxy_darwin_arm64.tar.gz
+
+    - name: Extract ligolo-ng proxy for Darwin ARM64
+      unarchive:
+        src: /tmp/ligolo-ng_proxy_darwin_arm64.tar.gz
+        dest: /opt/ligolo-ng/darwin/arm64
+        remote_src: yes
+
+    - name: Download ligolo-ng agent for Darwin ARM64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_agent_{{ ligolo_version_stripped }}_darwin_arm64.tar.gz"
+        dest: /tmp/ligolo-ng_agent_darwin_arm64.tar.gz
+
+    - name: Extract ligolo-ng agent for Darwin ARM64
+      unarchive:
+        src: /tmp/ligolo-ng_agent_darwin_arm64.tar.gz
+        dest: /opt/ligolo-ng/darwin/arm64
+        remote_src: yes
+
+    # Download and extract for Darwin AMD64
+    - name: Download ligolo-ng proxy for Darwin AMD64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_proxy_{{ ligolo_version_stripped }}_darwin_amd64.tar.gz"
+        dest: /tmp/ligolo-ng_proxy_darwin_amd64.tar.gz
+
+    - name: Extract ligolo-ng proxy for Darwin AMD64
+      unarchive:
+        src: /tmp/ligolo-ng_proxy_darwin_amd64.tar.gz
+        dest: /opt/ligolo-ng/darwin/amd64
+        remote_src: yes
+
+    - name: Download ligolo-ng agent for Darwin AMD64
+      get_url:
+        url: "https://github.com/nicocha30/ligolo-ng/releases/download/{{ release_version.stdout }}/ligolo-ng_agent_{{ ligolo_version_stripped }}_darwin_amd64.tar.gz"
+        dest: /tmp/ligolo-ng_agent_darwin_amd64.tar.gz
+
+    - name: Extract ligolo-ng agent for Darwin AMD64
+      unarchive:
+        src: /tmp/ligolo-ng_agent_darwin_amd64.tar.gz
+        dest: /opt/ligolo-ng/darwin/amd64
+        remote_src: yes
+
+    # Ensure all ligolo-ng binaries are executable
+    - name: Ensure all ligolo-ng binaries are executable
+      file:
+        path: /opt/ligolo-ng/
+        state: directory
+        recurse: yes
+        mode: '0755'
