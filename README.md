@@ -61,4 +61,8 @@ impacket-scripts (pipx this will need work)
 bloodhound (neo4j)
 ghidra
 ghostwriter (in software store)
+
+# terminals
+guake
+terminator
 ```
