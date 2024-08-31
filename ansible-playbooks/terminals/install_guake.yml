@@ -1,0 +1,7 @@
+---
+- name: Install Guake
+  become: true
+  dnf:
+    name: guake
+    state: present
+    update_cache: yes

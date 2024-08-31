@@ -1,0 +1,7 @@
+---
+- name: Install Terminator
+  become: true
+  dnf:
+    name: terminator
+    state: present
+    update_cache: yes

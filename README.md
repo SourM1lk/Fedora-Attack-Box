@@ -43,6 +43,16 @@ ligolo-ng
 evil-winrm (needs more work, currently broken)
 ```
 
+### Terminals
+```
+Guake
+Terminator
+```
+### Utilites
+```
+Obsidian
+
+```
 
 ### Notes to self
 ```
@@ -60,9 +70,4 @@ burp
 impacket-scripts (pipx this will need work)
 bloodhound (neo4j)
 ghidra
-ghostwriter (in software store)
-
-# terminals
-guake
-terminator
 ```
