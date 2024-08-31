@@ -1,7 +1,0 @@
----
-- name: Install Obsidian
-  become: true
-  dnf:
-    name: obsidian
-    state: present
-    update_cache: yes

@@ -48,11 +48,6 @@ evil-winrm (needs more work, currently broken)
 Guake
 Terminator
 ```
-### Utilites
-```
-Obsidian
-
-```
 
 ### Notes to self
 ```
