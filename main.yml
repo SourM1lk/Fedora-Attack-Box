@@ -68,6 +68,8 @@
     - include_tasks: ansible-playbooks/miscellaneous/install_sharpcollection.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_chisel.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_ligolo-ng.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_wordlists.yml
+    # - include_tasks: ansible-playbooks/miscellaneous/install_seclists.yml
     # - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml
 
 - name: Install and Configure Terminals

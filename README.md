@@ -32,7 +32,7 @@ Bloodhound CE
 
 ### Password Recovery Tools
 ```
-John the Ripper
+John
 hashcat
 ```
 
@@ -43,6 +43,8 @@ SharpCollection
 Chisel
 ligolo-ng
 evil-winrm (needs more work, currently broken)
+wordlists
+Seclists
 ```
 
 ### Terminals
@@ -67,7 +69,6 @@ gcc
 
 ### TODO
 ```
-wordlists
 burp
 impacket-scripts (pipx this will need work)
 ghidra

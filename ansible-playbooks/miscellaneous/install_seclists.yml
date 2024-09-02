@@ -1,0 +1,14 @@
+---
+- name: Create directory for SecLists
+  become: true
+  file:
+    path: /opt/seclists
+    state: directory
+    mode: '0755'
+
+- name: Clone SecLists repository
+  become: true
+  git:
+    repo: https://github.com/danielmiessler/SecLists.git
+    dest: /opt/seclists
+    depth: 1
