@@ -10,6 +10,7 @@
     - include_tasks: ansible-playbooks/dependencies/install_gcc.yml
     - include_tasks: ansible-playbooks/dependencies/install_libxcrypt.yml
     - include_tasks: ansible-playbooks/dependencies/install_ruby.yml
+    - include_tasks: ansible-playbooks/dependencies/install_docker.yml
 
 - name: Move Icons to /usr/share/icons
   hosts: all
@@ -44,6 +45,7 @@
   tasks:
     - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
     - include_tasks: ansible-playbooks/active_directory/install_enum4linux.yml
+    - include_tasks: ansible-playbooks/active_directory/install_bloodhound.yml
 
 - name: Install Web Tools
   hosts: all

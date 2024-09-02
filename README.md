@@ -1,15 +1,16 @@
 # Fedora Attack Box
-This Ansible playbook is designed to set up a Fedora-based environment with a curated selection of tools specifically for CTF challenges, red teaming, and pentesting. It aims to provide essential functionality without the additional bloat found in distros like Kali or Parrot.
+This Ansible playbook is designed to set up a Fedora-based environment with a selection of my favorite tools specifically for CTF challenges, red teaming, and pentesting. This was created to make my life easier with new VM installs without the extra tools I never touch in distros Kali or Parrot.
+
 
 ## Usage
 To run the playbook and install the tools:
-```
-ansible-playbook -i localhost, --connection=local main.yml --ask-become-pass
-```
 
-### Key Features
-Minimalist Setup: Only the essential tools needed for CTFs, red teaming, and pentesting are included, keeping your Fedora installation clean and focused.
-Customizable: You can easily comment out tools in the main.yml file if there are specific tools you don't need or want to exclude.
+1. Review `main.yml` and comment out (`#`) any lines corresponding to tools you do not want to install.
+2. Run the following command to execute the playbook:
+```bash
+   ansible-playbook -i localhost, --connection=local main.yml --ask-become-pass
+```
+3. Restart your system after the playbook completes.
 
 ## Tools Included
 ### Scanner Tools
@@ -26,6 +27,7 @@ sqlmap
 ```
 NetExec (needs more work)
 enum4linux
+Bloodhound CE
 ```
 
 ### Password Recovery Tools
@@ -49,6 +51,11 @@ Guake
 Terminator
 ```
 
+### Utilities
+```
+Docker
+```
+
 ### Notes to self
 ```
 Things i might remove:
@@ -63,6 +70,5 @@ gcc
 wordlists
 burp
 impacket-scripts (pipx this will need work)
-bloodhound (neo4j)
 ghidra
 ```

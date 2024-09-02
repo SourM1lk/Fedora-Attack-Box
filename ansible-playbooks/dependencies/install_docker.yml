@@ -1,0 +1,33 @@
+---
+- name: Install dnf-plugins-core
+  become: true
+  dnf:
+    name: dnf-plugins-core
+    state: present
+
+- name: Add Docker CE repository
+  become: true
+  command: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+- name: Install Docker Engine, Docker CLI, and containerd.io
+  become: true
+  dnf:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+    update_cache: yes
+
+- name: Start Docker service
+  become: true
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Install Docker Compose
+  become: true
+  dnf:
+    name: docker-compose
+    state: present

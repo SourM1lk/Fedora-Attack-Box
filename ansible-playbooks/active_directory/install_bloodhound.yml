@@ -1,0 +1,48 @@
+---
+- name: Create BloodHound directory
+  become: true
+  file:
+    path: /opt/bloodhound
+    state: directory
+    mode: '0755'
+
+- name: Download BloodHound Docker Compose YAML
+  become: true
+  get_url:
+    url: https://ghst.ly/getbhce
+    dest: /opt/bloodhound/docker-compose.yml
+    mode: '0644'
+
+- name: Create BloodHound start script
+  become: true
+  copy:
+    content: |
+      #!/bin/bash
+      cd /opt/bloodhound
+      docker compose pull
+      docker compose up -d
+      xdg-open http://localhost:8080/ui/login
+    dest: /opt/bloodhound/start_bloodhound.sh
+    mode: '0755'
+
+- name: Create BloodHound .desktop file
+  become: true
+  copy:
+    content: |
+      [Desktop Entry]
+      Name=BloodHound
+      Comment=Run BloodHound using Docker Compose
+      Exec=gnome-terminal -- bash -c "/opt/bloodhound/start_bloodhound.sh; exec bash"
+      Icon=/usr/share/icons/bloodhound.svg
+      Terminal=true
+      Type=Application
+      Categories=SecurityTools;
+    dest: /usr/share/applications/bloodhound.desktop
+    mode: '0644'
+
+- name: Add current user to the docker group
+  become: true
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
+    append: yes
