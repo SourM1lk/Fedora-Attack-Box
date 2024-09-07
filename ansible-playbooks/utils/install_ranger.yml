@@ -1,0 +1,6 @@
+---
+- name: Ensure Ranger is installed
+  become: true
+  dnf:
+    name: ranger
+    state: present

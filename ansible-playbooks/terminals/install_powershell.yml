@@ -1,0 +1,17 @@
+- name: Create directory for powershell
+  become: true
+  file:
+    path: /opt/powershell
+    state: directory
+    mode: '0755'
+
+- name: Clone powershell repository
+  become: true
+  git:
+    repo: https://github.com/PowerShell/PowerShell.git
+    dest: /opt/powershell
+    depth: 1
+
+- name: Run Powershell install script
+  become: true
+  command: /opt/powershell/tools/install-powershell.sh

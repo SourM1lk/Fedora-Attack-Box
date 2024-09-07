@@ -1,0 +1,6 @@
+---
+- name: Ensure FlameShot is installed
+  become: true
+  dnf:
+    name: flameshot
+    state: present

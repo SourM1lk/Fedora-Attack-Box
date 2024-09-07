@@ -50,6 +50,7 @@ Seclists
 ### Terminals
 ```
 Guake
+PowerShell
 Terminator
 ```
 

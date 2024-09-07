@@ -76,5 +76,14 @@
   hosts: all
   become: true
   tasks:
-    - include_tasks: ansible-playbooks/terminals/install_guake.yml
+    # - include_tasks: ansible-playbooks/terminals/install_guake.yml
+    - include_tasks: ansible-playbooks/terminals/install_powershell.yml
     # - include_tasks: ansible-playbooks/terminals/install_terminator.yml
+
+
+- name: Install Utilities
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/utils/install_ranger.yml
+    - include_tasks: ansible-playbooks/utils/install_ftp.yml

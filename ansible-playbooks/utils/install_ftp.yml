@@ -1,0 +1,6 @@
+---
+- name: Ensure FTP is installed
+  become: true
+  dnf:
+    name: ftp
+    state: present
