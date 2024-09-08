@@ -73,4 +73,6 @@ gcc
 burp
 impacket-scripts (pipx this will need work)
 ghidra
+alacritty
+rofi
 ```
