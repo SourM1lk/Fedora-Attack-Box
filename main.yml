@@ -89,6 +89,7 @@
     - include_tasks: ansible-playbooks/utils/install_ranger.yml
     - include_tasks: ansible-playbooks/utils/install_ftp.yml
     - include_tasks: ansible-playbooks/utils/install_rofi.yml
+    - include_tasks: ansible-playbooks/utils/install_polybar.yml
   
 - name: i3 Theme generation
   hosts: all

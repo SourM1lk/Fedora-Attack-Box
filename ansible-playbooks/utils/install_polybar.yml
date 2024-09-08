@@ -1,0 +1,6 @@
+---
+- name: Ensure polybar is installed
+  become: true
+  dnf:
+    name: polybar
+    state: present
