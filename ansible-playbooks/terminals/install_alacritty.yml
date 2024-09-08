@@ -1,0 +1,19 @@
+---
+- name: Install Alacritty dependencies
+  become: true
+  dnf:
+    name:
+      - cmake
+      - freetype-devel
+      - fontconfig-devel
+      - libxcb-devel
+      - libxkbcommon-devel
+      - g++
+    state: present
+    update_cache: yes
+
+- name: Install Alacritty via Cargo
+  command: cargo install alacritty
+
+- name: Move Alacritty to /usr/local/bin
+  command: cp -r ~/.cargo/bin/alacritty /usr/local/bin/alacritty

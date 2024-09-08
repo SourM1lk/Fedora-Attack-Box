@@ -1,0 +1,6 @@
+---
+- name: Ensure ROFI is installed
+  become: true
+  dnf:
+    name: rofi
+    state: present

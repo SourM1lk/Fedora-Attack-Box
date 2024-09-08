@@ -1,0 +1,32 @@
+---
+- name: Ensure ~/.config directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+    mode: '0755'
+
+- name: Move dotfiles from the playbook directory to ~/.config
+  copy:
+    src: "{{ playbook_dir }}/dotfiles/.config/"
+    dest: "{{ ansible_env.HOME }}/.config/"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: '0644'
+    remote_src: yes
+    directory_mode: '0755'
+
+- name: Ensure the correct ownership of the files
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+    recurse: yes
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+
+- name: Move alacritty.toml to ~/.config/alacritty
+  copy:
+    src: "{{ playbook_dir }}/dotfiles/.config/alacritty/alacritty.toml"
+    dest: "{{ ansible_env.HOME }}/.config/alacritty.toml"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: '0644'
