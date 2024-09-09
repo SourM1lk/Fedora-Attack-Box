@@ -1,15 +1,8 @@
 ---
-- name: Fetch the latest NetExec release binary
-  get_url:
-    url: "https://github.com/Pennyw0rth/NetExec/releases/latest/download/nxc"
-    dest: "/tmp/nxc"
-    mode: '0755'
-
-- name: Move NetExec binary to /usr/bin
-  copy:
-    src: "/tmp/nxc"
-    dest: "/usr/bin/nxc"
-    mode: '0755'
+- name: Install NetExec using pipx
+  pip:
+    name: "git+https://github.com/Pennyw0rth/NetExec"
+    executable: pipx
 
 - name: Create NetExec .desktop file
   copy:
@@ -24,5 +17,3 @@
       Categories=WebTools;
     dest: /usr/share/applications/netexec.desktop
     mode: '0644'
-    
-    # TODO: Add NetExec VIA Pipx (missing nxcdb)

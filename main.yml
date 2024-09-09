@@ -43,7 +43,6 @@
   hosts: all
   become: true
   tasks:
-    - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
     - include_tasks: ansible-playbooks/active_directory/install_enum4linux.yml
     - include_tasks: ansible-playbooks/active_directory/install_bloodhound.yml
 
@@ -70,17 +69,16 @@
     - include_tasks: ansible-playbooks/miscellaneous/install_ligolo-ng.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_wordlists.yml
     # - include_tasks: ansible-playbooks/miscellaneous/install_seclists.yml
-    # - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml
+    
 
 - name: Install and Configure Terminals
   hosts: all
   become: true
   tasks:
     - include_tasks: ansible-playbooks/terminals/install_alacritty.yml
-    # - include_tasks: ansible-playbooks/terminals/install_guake.yml
     - include_tasks: ansible-playbooks/terminals/install_powershell.yml
+    # - include_tasks: ansible-playbooks/terminals/install_guake.yml
     # - include_tasks: ansible-playbooks/terminals/install_terminator.yml
-
 
 - name: Install Utilities
   hosts: all
@@ -90,9 +88,18 @@
     - include_tasks: ansible-playbooks/utils/install_ftp.yml
     - include_tasks: ansible-playbooks/utils/install_rofi.yml
     - include_tasks: ansible-playbooks/utils/install_polybar.yml
-  
+    - include_tasks: ansible-playbooks/utils/install_fontawesome.yml
+    - include_tasks: ansible-playbooks/utils/flameshot.yml
+
+- name: Install applications requiring pipx or gem (non-root)
+  hosts: all
+  become: false
+  tasks:
+    - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml
+    - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
+
 - name: i3 Theme generation
   hosts: all
-  become: true
+  become: false
   tasks:
     - include_tasks: ansible-playbooks/themes/gruvbox.yml

@@ -20,7 +20,7 @@
       [Desktop Entry]
       Name=Enum4Linux
       Comment=Enum4Linux - SMB enumeration tool
-      Exec=gnome-terminal -- bash -c "/usr/bin/enum4linux; exec bash"
+      Exec=alacritty -e bash -c "/usr/bin/enum4linux; exec bash"
       Icon=/usr/share/icons/enum4linux.svg
       Terminal=true
       Type=Application

@@ -57,6 +57,12 @@ Terminator
 ### Utilities
 ```
 Docker
+FlameShot
+FTP
+Ranger
+ROFI
+PolyBar
+FontAwesome-6
 ```
 
 ### Notes to self
@@ -73,6 +79,4 @@ gcc
 burp
 impacket-scripts (pipx this will need work)
 ghidra
-alacritty
-rofi
 ```

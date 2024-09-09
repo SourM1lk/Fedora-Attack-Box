@@ -1,0 +1,6 @@
+---
+- name: Ensure FontAwesome is installed
+  become: true
+  dnf:
+    name: fontawesome-6-free-fonts
+    state: present
