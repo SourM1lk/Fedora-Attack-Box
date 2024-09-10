@@ -30,6 +30,7 @@ sqlmap
 NetExec
 enum4linux
 Bloodhound CE
+impacket
 ```
 
 ### Password Recovery Tools
