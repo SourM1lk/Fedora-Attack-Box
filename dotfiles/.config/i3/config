@@ -16,6 +16,7 @@ set $mod Mod4
 font pango:monospace 8
 
 # Set Gaps
+for_window [class=".*"] border pixel 2
 gaps inner 5
 gaps outer 0
 
@@ -198,6 +199,7 @@ exec --no-startup-id vmware-user-suid-wrapper
 # border + thin borders
 default_border pixel 1
 hide_edge_borders both
+smart_borders on
 
 # Define colors variables:
 # bg tab mode
