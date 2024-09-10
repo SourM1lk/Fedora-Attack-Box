@@ -1,7 +1,8 @@
 # Fedora Attack Box
-This Ansible playbook is designed to set up a Fedora-based environment with a selection of my favorite tools specifically for CTF challenges, red teaming, and pentesting. This was created to make my life easier with new VM installs without the extra tools I never touch in distros Kali or Parrot.
+This Ansible playbook is designed to setup my Fedora-based environment, installing all my preferred pentesting and red team tools. Additionally, it configures my i3 desktop, making the setup process for new VMs quick and efficient without unnecessary extras found in distributions like Kali or Parrot..... Plus, i3 is just mo betta!
 
 ![Screen Shot](screenshots/screenshot.png)
+![Screen Shot 2](screenshots/screenshot2.png)
 
 ## Usage
 To run the playbook and install the tools:
@@ -76,5 +77,4 @@ picom
 ### TODO
 ```
 burp
-impacket-scripts (pipx this will need work)
 ```
