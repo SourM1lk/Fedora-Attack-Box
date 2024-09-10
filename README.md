@@ -1,7 +1,7 @@
 # Fedora Attack Box
 This Ansible playbook is designed to setup my Fedora-based environment, installing all my preferred pentesting and red team tools. Additionally, it configures my i3 desktop, making the setup process for new VMs quick and efficient without unnecessary extras found in distributions like Kali or Parrot..... Plus, i3 is just mo betta!
 
-![Screen Shot](screenshots/screenshot.png)
+![Screen Shot](screenshots/screenshot1.png)
 ![Screen Shot 2](screenshots/screenshot2.png)
 
 ## Usage
