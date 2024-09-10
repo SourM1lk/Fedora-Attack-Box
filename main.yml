@@ -22,12 +22,6 @@
         dest: /usr/share/icons/
         mode: '0644'
 
-- name: Create Desktop Directories
-  hosts: all
-  become: true
-  tasks:
-    - include_tasks: ansible-playbooks/utils/create_directory.yml
-
 - name: Install Scanner Tools
   hosts: all
   become: true
@@ -70,7 +64,6 @@
     - include_tasks: ansible-playbooks/miscellaneous/install_wordlists.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_binary_ninja.yml
     # - include_tasks: ansible-playbooks/miscellaneous/install_seclists.yml
-    
 
 - name: Install and Configure Terminals
   hosts: all

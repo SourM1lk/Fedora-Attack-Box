@@ -14,7 +14,7 @@
 - name: Unzip Binary Ninja free installer
   unarchive:
     src: /tmp/binaryninja_free_linux.zip
-    dest: /opt/binaryninja
+    dest: /opt/
     remote_src: yes
   become: true
 

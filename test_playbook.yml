@@ -1,6 +1,5 @@
 - name: Install applications requiring pipx or gem (non-root)
   hosts: all
-  become: false
+  become: true
   tasks:
-    - include_tasks: ansible-playbooks/dependencies/install_pipx_path.yml
-    - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_binary_ninja.yml
