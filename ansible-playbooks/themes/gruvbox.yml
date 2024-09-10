@@ -1,6 +1,28 @@
 ---
-- name: Copy dotfiles to ~/.config using the `cp` command
+# Copy dotfiles to ~/.config using the `cp` command
+- name: Copy dotfiles to ~/.config
   command: cp -r "{{ playbook_dir }}/dotfiles/.config/." "{{ lookup('env', 'HOME') }}/.config/"
 
+# Copy alacritty.toml to ~/.config
 - name: Copy alacritty.toml to ~/.config
   command: cp "{{ playbook_dir }}/dotfiles/.config/alacritty/alacritty.toml" "{{ lookup('env', 'HOME') }}/.config/alacritty.toml"
+
+# Copy .zshrc to ~/.config
+- name: Copy .zshrc to home directory
+  command: cp "{{ playbook_dir }}/dotfiles/.config/zsh/.zshrc" "{{ lookup('env', 'HOME') }}/.zshrc"
+
+# Copy Background
+- name: Copy Background to ~/Documents
+  command: cp "{{ playbook_dir }}/backgrounds/pacman.png" "{{ lookup('env', 'HOME') }}/Documents/pacman.png"
+
+# Clone zsh-autosuggestions GitHub repo
+- name: Clone zsh-autosuggestions repository
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "{{ lookup('env', 'HOME') }}/.zsh/zsh-autosuggestions"
+
+# Clone zsh-syntax-highlighting GitHub repo
+- name: Clone zsh-syntax-highlighting repository
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ lookup('env', 'HOME') }}/.zsh/zsh-syntax-highlighting"

@@ -89,12 +89,15 @@
     - include_tasks: ansible-playbooks/utils/install_rofi.yml
     - include_tasks: ansible-playbooks/utils/install_polybar.yml
     - include_tasks: ansible-playbooks/utils/install_fontawesome.yml
-    - include_tasks: ansible-playbooks/utils/flameshot.yml
+    - include_tasks: ansible-playbooks/utils/install_flameshot.yml
+    - include_tasks: ansible-playbooks/utils/install_zsh.yml
+    - include_tasks: ansible-playbooks/utils/install_nitrogen.yml
 
 - name: Install applications requiring pipx or gem (non-root)
   hosts: all
   become: false
   tasks:
+    - include_tasks: ansible-playbooks/dependencies/install_pipx_path.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml
     - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
 
@@ -103,3 +106,9 @@
   become: false
   tasks:
     - include_tasks: ansible-playbooks/themes/gruvbox.yml
+
+- name: Set ZSH as default shell
+  hosts: all
+  become: true
+  tasks:
+    - include_tasks: ansible-playbooks/themes/shell.yml

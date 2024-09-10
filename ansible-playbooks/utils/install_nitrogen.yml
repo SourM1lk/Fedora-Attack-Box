@@ -1,0 +1,6 @@
+---
+- name: Ensure nitrogen is installed
+  become: true
+  dnf:
+    name: nitrogen
+    state: present

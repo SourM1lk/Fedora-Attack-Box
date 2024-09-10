@@ -63,6 +63,7 @@ Ranger
 ROFI
 PolyBar
 FontAwesome-6
+zsh (autosuggestions syntax-highlighting)
 ```
 
 ### Notes to self

@@ -185,15 +185,30 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# class                 border  bground text    indicator child_border
-client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
-client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
-client.unfocused        #4C4C4C #222222 #888888 #292D2E   #222222
-client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
-
-client.background       #FFFFFF
-
 # autostart applications on login
 # Polybar
 exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh
+
+# set wallpaper
+exec nitrogen --set-zoom-fill ~/Documents/pacman.png
+
+# VMWare Tools
+exec --no-startup-id vmware-user-suid-wrapper
+
+# border + thin borders
+default_border pixel 1
+hide_edge_borders both
+
+# Define colors variables:
+# bg tab mode
+set $color1     #1d2021
+set $color2     #d79921
+set $color3     #fabd3f
+set $color4     #928374
+
+# define colors for windows:
+#class                       border            bground         text              indicator       child_border
+client.focused               $color2           $color1         $color3           $color2         $color2
+client.unfocused             $color4           $color1         $color4           $color1         $color1
+client.focused_inactive      $color4           $color1         $color4           $color1         $color1
+client.urgent                $color3           $color3         $color2           $color2         $color1
