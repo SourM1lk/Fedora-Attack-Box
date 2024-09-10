@@ -1,0 +1,6 @@
+---
+- name: Ensure Chromium is installed
+  become: true
+  dnf:
+    name: chromium
+    state: present

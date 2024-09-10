@@ -92,6 +92,9 @@
     - include_tasks: ansible-playbooks/utils/install_flameshot.yml
     - include_tasks: ansible-playbooks/utils/install_zsh.yml
     - include_tasks: ansible-playbooks/utils/install_nitrogen.yml
+    - include_tasks: ansible-playbooks/utils/install_openvpn.yml
+    - include_tasks: ansible-playbooks/utils/install_chromium.yml
+    - include_tasks: ansible-playbooks/utils/install_picom.yml
 
 - name: Install applications requiring pipx or gem (non-root)
   hosts: all

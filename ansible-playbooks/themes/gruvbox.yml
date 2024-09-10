@@ -3,10 +3,6 @@
 - name: Copy dotfiles to ~/.config
   command: cp -r "{{ playbook_dir }}/dotfiles/.config/." "{{ lookup('env', 'HOME') }}/.config/"
 
-# Copy alacritty.toml to ~/.config
-- name: Copy alacritty.toml to ~/.config
-  command: cp "{{ playbook_dir }}/dotfiles/.config/alacritty/alacritty.toml" "{{ lookup('env', 'HOME') }}/.config/alacritty.toml"
-
 # Copy .zshrc to ~/.config
 - name: Copy .zshrc to home directory
   command: cp "{{ playbook_dir }}/dotfiles/.config/zsh/.zshrc" "{{ lookup('env', 'HOME') }}/.zshrc"

@@ -1,0 +1,6 @@
+---
+- name: Ensure OpenVPN is installed
+  become: true
+  dnf:
+    name: openvpn
+    state: present

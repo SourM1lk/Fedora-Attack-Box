@@ -1,0 +1,6 @@
+---
+- name: Ensure picom is installed
+  become: true
+  dnf:
+    name: picom
+    state: present

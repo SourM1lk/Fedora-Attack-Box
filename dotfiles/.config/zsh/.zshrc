@@ -37,3 +37,6 @@ bindkey '^[[3~' delete-char    # Delete
 #    Exporting Paths
 ###################################
 export PATH="$HOME/.local/bin:$PATH"
+
+# Color Fixes
+LS_COLORS='ow=31:'; export LS_COLORS

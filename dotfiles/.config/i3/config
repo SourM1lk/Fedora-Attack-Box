@@ -196,6 +196,9 @@ exec nitrogen --set-zoom-fill ~/Documents/pacman.png
 # VMWare Tools
 exec --no-startup-id vmware-user-suid-wrapper
 
+# Compositor
+exec picom
+
 # border + thin borders
 default_border pixel 1
 hide_edge_borders both
