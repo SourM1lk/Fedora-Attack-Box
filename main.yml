@@ -68,6 +68,7 @@
     - include_tasks: ansible-playbooks/miscellaneous/install_chisel.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_ligolo-ng.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_wordlists.yml
+    - include_tasks: ansible-playbooks/miscellaneous/install_binary_ninja.yml
     # - include_tasks: ansible-playbooks/miscellaneous/install_seclists.yml
     
 
@@ -103,6 +104,7 @@
     - include_tasks: ansible-playbooks/dependencies/install_pipx_path.yml
     - include_tasks: ansible-playbooks/miscellaneous/install_evil-winrm.yml
     - include_tasks: ansible-playbooks/active_directory/install_netexec.yml
+    - include_tasks: ansible-playbooks/active_directory/install_impacket.yml
 
 - name: i3 Theme generation
   hosts: all

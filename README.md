@@ -25,7 +25,7 @@ sqlmap
 
 ### Active Directory Tools
 ```
-NetExec (needs more work)
+NetExec
 enum4linux
 Bloodhound CE
 ```
@@ -42,13 +42,15 @@ MetaSploit
 SharpCollection
 Chisel
 ligolo-ng
-evil-winrm (needs more work, currently broken)
+evil-winrm
 wordlists
 Seclists
+BinaryNinja
 ```
 
 ### Terminals
 ```
+alacritty
 Guake
 PowerShell
 Terminator
@@ -64,20 +66,14 @@ ROFI
 PolyBar
 FontAwesome-6
 zsh (autosuggestions syntax-highlighting)
-```
-
-### Notes to self
-```
-Things i might remove:
-pipx
-python3-devel
-rust
-gcc
+nitrogen
+openvpn
+chromium
+picom
 ```
 
 ### TODO
 ```
 burp
 impacket-scripts (pipx this will need work)
-ghidra
 ```

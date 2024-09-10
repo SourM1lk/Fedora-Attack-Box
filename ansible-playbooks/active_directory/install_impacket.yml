@@ -1,0 +1,3 @@
+---
+- name: Install impacket using pipx
+  command: pipx install impacket
