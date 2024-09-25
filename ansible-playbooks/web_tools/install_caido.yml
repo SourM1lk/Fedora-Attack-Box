@@ -1,7 +1,7 @@
 ---
 - name: Download Caido AppImage
   get_url:
-    url: "https://storage.googleapis.com/caido-releases/v0.40.0/caido-desktop-v0.40.0-linux-x86_64.AppImage"
+    url: "https://caido.download/releases/v0.40.0/caido-desktop-v0.40.0-linux-x86_64.AppImage"
     dest: "/tmp/caido.AppImage"
     mode: '0755'
 
